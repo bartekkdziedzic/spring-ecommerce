@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="ISO-8859-1">
+    <meta charset="ddd">
     <title>Insert title here</title>
 </head>
 <body>
@@ -15,6 +15,11 @@
     <input type="submit"><br>
 </form>
 
+<form action="getProducer">
+    <h2>Id: </h2>  <input type="text" name="producerId"><br>
+
+    <input type="submit"><br>
+</form>
 
 </body>
 </html>
