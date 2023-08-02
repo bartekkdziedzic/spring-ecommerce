@@ -16,15 +16,10 @@ public class ProducerController {
     @Autowired
     ProducerRepo producerRepo;
 
-    @RequestMapping("/")
-    public String home() {
-        return "home.jsp";
-    }
-
     @RequestMapping("/addProducer")
     public String addProducer(Producer producer) {
         producerRepo.save(producer);
-        return "home.jsp";
+        return "homeProducerTest.jsp";
     }
 
     @RequestMapping("/getProducer")

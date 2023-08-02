@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="ddd">
-    <title>Insert title here</title>
+    <title>Shop home page</title>
 </head>
 <body>
 
