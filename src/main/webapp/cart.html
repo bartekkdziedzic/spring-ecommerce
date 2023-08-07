@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www/thymeleaf.org">
 
 <head>
     <meta charset="UTF-8"/>
@@ -33,43 +33,43 @@
 
 <div class="main-content">
 
-<table>
-<tr>
-<th style="width: 30px;">No.</th>
-<th style="width: 50px;">pic</th>
-<th>Name</th>
-<th>Quantity</th>
-<th>Sum</th>
-<th style="width: 30px;"></th>
-</tr>
+    <table>
+        <tr>
+            <th style="width: 30px;">No.</th>
+            <th style="width: 50px;">pic</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Sum</th>
+            <th style="width: 30px;"></th>
+        </tr>
 
-<tr>
+        <tr>
 
-  <td>1</td>
-  <td>
-    <img src="https://m.media-amazon.com/images/I/51ckv2myWXL.jpg" alt="image placeholder">
-  </td>
-  <td>Piggy</td>
-  <td style="display: flex; padding-top: 10px;">
-<a class="manipulation-btn" href="">-</a>
-<p>1</p>
-<a class="manipulation-btn" href="">+</a>
-</td>
-  <td>7.99</td>
-  <td>
-    <a class="manipulation-btn" href="">X</a>
-  </td>
+            <td>1</td>
+            <td>
+                <img src="https://m.media-amazon.com/images/I/51ckv2myWXL.jpg" alt="image placeholder">
+            </td>
+            <td>Piggy</td>
+            <td style="display: flex; padding-top: 10px;">
+                <a class="manipulation-btn" href="">-</a>
+                <p>1</p>
+                <a class="manipulation-btn" href="">+</a>
+            </td>
+            <td>7.99</td>
+            <td>
+                <a class="manipulation-btn" href="">X</a>
+            </td>
 
-</tr>
-</table>
+        </tr>
+    </table>
 
-<div class="summary">
-<p>
-    <span>To pay: </span><span>100 </span><span>PLN</span>
-</p>
-</div>
+    <div class="summary">
+        <p>
+            <span>To pay: </span><span>100 </span><span>PLN</span>
+        </p>
+    </div>
 
-<button>Pay</button>
+    <button>Pay</button>
 
 </div>
 

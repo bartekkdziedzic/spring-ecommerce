@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www/thymeleaf.org">
 
 <head>
     <meta charset="UTF-8"/>
@@ -36,68 +36,12 @@
 
     <div class="product">
 
-        <p class="product-name">nazwa </p>
+        <p class="product-name" th:text="${product.name}"></p>
         <img src="https://m.media-amazon.com/images/I/51ckv2myWXL.jpg" alt="image placeholder">
 
         <div>
             <span>Price:</span>
-            <span>7.99</span>
-            <span>PLN</span>
-        </div>
-
-        <a href="" class="add-btn">Add to your cart</a>
-    </div>
-
-    <div class="product">
-
-        <p class="product-name">nazwa </p>
-        <img src="https://m.media-amazon.com/images/I/51ckv2myWXL.jpg" alt="image placeholder">
-
-        <div>
-            <span>Price:</span>
-            <span>7.99</span>
-            <span>PLN</span>
-        </div>
-
-        <a href="" class="add-btn">Add to your cart</a>
-    </div>
-
-    <div class="product">
-
-        <p class="product-name">nazwa </p>
-        <img src="https://m.media-amazon.com/images/I/51ckv2myWXL.jpg" alt="image placeholder">
-
-        <div>
-            <span>Price:</span>
-            <span>7.99</span>
-            <span>PLN</span>
-        </div>
-
-        <a href="" class="add-btn">Add to your cart</a>
-    </div>
-
-    <div class="product">
-
-        <p class="product-name">nazwa </p>
-        <img src="https://m.media-amazon.com/images/I/51ckv2myWXL.jpg" alt="image placeholder">
-
-        <div>
-            <span>Price:</span>
-            <span>7.99</span>
-            <span>PLN</span>
-        </div>
-
-        <a href="" class="add-btn">Add to your cart</a>
-    </div>
-
-    <div class="product">
-
-        <p class="product-name">nazwa </p>
-        <img src="https://m.media-amazon.com/images/I/51ckv2myWXL.jpg" alt="image placeholder">
-
-        <div>
-            <span>Price:</span>
-            <span>7.99</span>
+            <span th:text="${product.price}"></span>
             <span>PLN</span>
         </div>
 
