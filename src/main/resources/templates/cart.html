@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style.css"/>
+    <title>Browser</title>
+</head>
+
+<body>
+<header>
+    <span class="title">virgShop - cart</span>
+    <span class="settings">
+          <button type="button">Settings</button>
+    </span>
+
+    <span class="cart-button">
+      <button type="button">Cart</button>
+      <span>Sum:</span>
+          <span>0.00</span>
+          <span>PLN</span>
+    </span>
+
+    <span class="searchbar">
+          <label>Search:</label>
+          <input type="text">
+            <button type="button">Search</button>
+          </span>
+
+
+</header>
+
+<div class="main-content">
+
+    <table>
+        <tr>
+            <th style="width: 30px;">No.</th>
+            <th style="width: 50px;">pic</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Sum</th>
+            <th style="width: 30px;"></th>
+        </tr>
+
+        <tr>
+
+            <td>1</td>
+            <td>
+                <img src="https://m.media-amazon.com/images/I/51ckv2myWXL.jpg" alt="image placeholder">
+            </td>
+            <td>Piggy</td>
+            <td style="display: flex; padding-top: 10px;">
+                <a class="manipulation-btn" href="">-</a>
+                <p>1</p>
+                <a class="manipulation-btn" href="">+</a>
+            </td>
+            <td>7.99</td>
+            <td>
+                <a class="manipulation-btn" href="">X</a>
+            </td>
+
+        </tr>
+    </table>
+
+    <div class="summary">
+        <p>
+            <span>To pay: </span><span>100 </span><span>PLN</span>
+        </p>
+    </div>
+
+    <button>Pay</button>
+
+</div>
+
+
+</body>
+
+</html>

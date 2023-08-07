@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style.css"/>
+    <title>Browser</title>
+</head>
+
+<body>
+<header>
+    <span class="title">virgShop</span>
+    <span class="settings">
+          <button type="button">Settings</button>
+    </span>
+
+    <span class="cart-button">
+      <button type="button">Cart</button>
+      <span>Sum:</span>
+          <span>0.00</span>
+          <span>PLN</span>
+    </span>
+
+    <span class="searchbar">
+          <label>Search:</label>
+          <input type="text">
+            <button type="button">Search</button>
+          </span>
+
+</header>
+
+<div class="main-content">
+
+    <div class="product" th:each="product : ${products}">
+
+        <p class="product-name" th:text="${product.name}"></p>
+        <img th:src="@{${product.imgUrl}}">
+
+        <div>
+            <span>Price:</span>
+            <span th:text="${product.price}"></span>
+            <span>PLN</span>
+        </div>
+
+        <a href="" class="add-btn">Add to your cart</a>
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
