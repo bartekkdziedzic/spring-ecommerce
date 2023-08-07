@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www/thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8"/>
@@ -28,16 +28,14 @@
             <button type="button">Search</button>
           </span>
 
-
 </header>
 
 <div class="main-content">
 
-
-    <div class="product">
+    <div class="product" th:each="product : ${products}">
 
         <p class="product-name" th:text="${product.name}"></p>
-        <img src="https://m.media-amazon.com/images/I/51ckv2myWXL.jpg" alt="image placeholder">
+        <img th:src="@{${product.imgUrl}}">
 
         <div>
             <span>Price:</span>
