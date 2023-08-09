@@ -14,7 +14,7 @@ public class AdminController {
 
     private final ProductRepo productRepo;
 
-@Autowired
+    @Autowired
     public AdminController(ProductRepo productRepo) {
         this.productRepo = productRepo;
     }

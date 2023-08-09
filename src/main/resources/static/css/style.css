@@ -3,7 +3,7 @@ body {
     background-color: beige;
 }
 
-header{
+header {
     text-align: center;
     background-color: silver;
     color: black;
@@ -12,9 +12,9 @@ header{
 
 
 .title {
-    float:left;
+    float: left;
     font-size: 1.5rem;
-    font-weight:bold;
+    font-weight: bold;
     margin-left: 20px;
 }
 
@@ -38,11 +38,10 @@ header{
 }
 
 
-
 .main-content {
     background-color: rgb(226, 220, 194);
     width: 80%;
-    margin:auto;
+    margin: auto;
     margin-top: 10px;
     padding: 5px;
 
@@ -68,13 +67,13 @@ header{
     padding: 3px;
     text-align: center;
     font-size: larger;
-    font-weight:bold;
+    font-weight: bold;
     margin-top: 0;
     width: calc(100% - 6px);
 }
 
 
-.product img{
+.product img {
     width: 70%;
     height: auto;
     border: 1px solid black;
@@ -98,19 +97,19 @@ header{
     background-color: brown;
 }
 
-form{
+form {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
 }
 
-form label{
+form label {
     width: 100%;
 }
 
-.manipulation-btn{
+.manipulation-btn {
     background-color: blanchedalmond;
     text-decoration: none;
     display: block;
@@ -124,22 +123,22 @@ form label{
 }
 
 
-table, tr{
+table, tr {
     width: 80%;
     border: solid 1px black;
 }
 
-th{
+th {
     text-align: left;
     border: solid 1px black;
 }
 
-td img{
+td img {
     width: 40px;
     height: 40px;
 }
 
-td p{
+td p {
     margin: 3px;
     padding: 5px;
 }

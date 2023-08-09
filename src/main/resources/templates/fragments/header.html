@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <title>Title</title>
+</head>
+<body>
+
+<header th:fragment="ecommerceHeader">
+    <span class="title">virgShop</span>
+    <span class="settings">
+          <button type="button">Settings</button>
+    </span>
+
+    <span class="cart-button">
+      <button type="button">Cart</button>
+      <span th:if="${session.cart != null}" th:text="'('+ ${session.cart.size()}+')'"></span>
+        <span th:unless="${session.cart != null}">(0 pcs.)</span>
+        <span>0.00</span>
+        <span>PLN</span>
+    </span>
+
+    <span class="searchbar">
+          <label>Search:</label>
+          <input type="text">
+            <button type="button">Search</button>
+          </span>
+
+</header>
+</body>
+</html>
