@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import pl.sda.springecommerce.Cart;
 import pl.sda.springecommerce.dao.ProductRepo;
 import pl.sda.springecommerce.model.Product;
 
@@ -17,10 +18,12 @@ import java.util.Optional;
 public class HomeController {
 
     private final ProductRepo productRepo;
+    private final Cart cart;
 
     @Autowired
-    public HomeController(ProductRepo productRepo) {
+    public HomeController(ProductRepo productRepo, Cart cart) {
         this.productRepo = productRepo;
+        this.cart = cart;
     }
 
     @GetMapping("/")
@@ -31,18 +34,12 @@ public class HomeController {
 
 
     @GetMapping("/add/{productId}")
-    public String addProductToCart(@PathVariable("productId") Long productId, Model model, HttpSession session) {
-        @SuppressWarnings("unchecked")
-        List<Product> cart = (List<Product>) session.getAttribute("cart");
-        if (cart == null) {
-            cart = new ArrayList<>();
-        }
+    public String addProductToCart(@PathVariable("productId") Long productId, Model model){
 
         Optional<Product> oProduct = productRepo.findById(productId);
         if (oProduct.isPresent()) {
             Product product = oProduct.get();
-            cart.add(product);
-            session.setAttribute("cart", cart);
+            cart.addProduct(product);
         }
         model.addAttribute("products", productRepo.findAll());
         return "home";

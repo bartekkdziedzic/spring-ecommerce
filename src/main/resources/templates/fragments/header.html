@@ -15,9 +15,8 @@
 
     <span class="cart-button">
       <button type="button">Cart</button>
-      <span th:if="${session.cart != null}" th:text="'('+ ${session.cart.size()}+')'"></span>
-        <span th:unless="${session.cart != null}">(0 pcs.)</span>
-        <span>0.00</span>
+      <span th:text="'(' + ${@cart.counter} + ')'"></span>
+        <span th:text="${@cart.cartSum}"></span>
         <span>PLN</span>
     </span>
 
