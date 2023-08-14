@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<header th:replace="/fragments/header :: ecommerceHeader"></header>
+<header th:replace="~{/fragments/header :: ecommerceHeader}"></header>
 
 <div class="main-content">
 
@@ -23,19 +23,19 @@
             <th style="width: 30px;"></th>
         </tr>
 
-        <tr>
+        <tr th:each="cartProduct: ${@cart.cartProducts}">
 
             <td>1</td>
             <td>
-                <img src="https://m.media-amazon.com/images/I/51ckv2myWXL.jpg" alt="image placeholder">
+                <img th:src="@{${cartProduct.product.imgUrl}}">
             </td>
-            <td>Piggy</td>
+            <td th:text="${cartProduct.product.name}"></td>
             <td style="display: flex; padding-top: 10px;">
-                <a class="manipulation-btn" href="">-</a>
-                <p>1</p>
-                <a class="manipulation-btn" href="">+</a>
+                <a class="manipulation-btn" th:href="@{'/order/decrease/' + ${cartProduct.product.id}}">-</a>
+                <p th:text="${cartProduct.counter}"></p>
+                <a class="manipulation-btn" th:href="@{'/order/increase/' + ${cartProduct.product.id}}">+</a>
             </td>
-            <td>7.99</td>
+            <td th:text="${cartProduct.productPriceSum}">7.99</td>
             <td>
                 <a class="manipulation-btn" href="">X</a>
             </td>
@@ -45,7 +45,7 @@
 
     <div class="summary">
         <p>
-            <span>To pay: </span><span>100 </span><span>PLN</span>
+            <span>To pay: </span><span th:text="${@cart.cartSum}">100 </span><span>PLN</span>
         </p>
     </div>
 

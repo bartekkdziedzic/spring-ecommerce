@@ -9,6 +9,7 @@ import pl.sda.springecommerce.model.Product;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -21,49 +22,43 @@ public class Cart {
 
 
     public void addProduct(Product product) {
-        boolean notFound = true;
+        getCartProduct(product).ifPresentOrElse(
+                CartProduct::increaseCounter,
+                () -> cartProducts.add(new CartProduct(product))
+        );
+        calculatePriceAndCounter();
 
-        for (CartProduct cp : cartProducts) {
-            if (cp.getProduct().getId().equals(product.getId())) {
-                notFound = false;
-                cp.increaseCounter();
-                calculatePriceAndCounter();
-                break;
-            }
-        }
-
-        if (notFound) {
-            cartProducts.add(new CartProduct(product));
-            calculatePriceAndCounter();
-        }
     }
 
 
     public void removeProduct(Product product) {
-        for (CartProduct cp : cartProducts) {
-            if (cp.getProduct().getId().equals(product.getId())) {
-                cp.decreaseCounter();
-                if (cp.hasNoProducts()) {
-                    cartProducts.remove(cp);
-                }
-                calculatePriceAndCounter();
-                break;
+        Optional<CartProduct> optionalCartProduct = getCartProduct(product);
+        if (optionalCartProduct.isPresent()) {
+            CartProduct cartProduct = optionalCartProduct.get();
+            cartProduct.decreaseCounter();
+            if (cartProduct.hasNoProducts()) {
+                cartProducts.removeIf(p -> p.idEquals(product));
             }
         }
+        calculatePriceAndCounter();
     }
 
 
     public void calculatePriceAndCounter() {
-        BigDecimal tempPrice = BigDecimal.ZERO;
-        int tempCounter = 0;
 
-        for (CartProduct cp : cartProducts) {
-            tempCounter += cp.getCounter();
-            tempPrice = tempPrice.add(cp.getProductPriceSum());
-        }
-        this.counter = tempCounter;
-        this.cartSum = tempPrice;
+        cartSum = cartProducts.stream().map(CartProduct::getProductPriceSum)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
+        counter = cartProducts.stream().mapToInt(CartProduct::getCounter)
+                .reduce(0, Integer::sum);
+
+
+    }
+
+    private Optional<CartProduct> getCartProduct(Product product) {
+        return cartProducts.stream()
+                .filter(cp -> cp.idEquals(product))
+                .findFirst();
     }
 
 

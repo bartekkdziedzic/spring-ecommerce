@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<header th:replace="/fragments/header :: ecommerceHeader"></header>
+<header th:replace="~{/fragments/header :: ecommerceHeader}"></header>
 
 
 <div class="main-content">
@@ -26,6 +26,7 @@
         </div>
 
         <a th:href="@{'/add/' + ${product.id}}" class="add-btn">Add to your cart</a>
+        <a th:href="@{'/remove/' + ${product.id}}" class="add-btn">remove from your cart</a>
     </div>
 
 

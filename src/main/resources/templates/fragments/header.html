@@ -14,10 +14,11 @@
     </span>
 
     <span class="cart-button">
-      <button type="button">Cart</button>
+        <a th:href="@{/order/cart}">
       <span th:text="'(' + ${@cart.counter} + ')'"></span>
         <span th:text="${@cart.cartSum}"></span>
         <span>PLN</span>
+        </a>
     </span>
 
     <span class="searchbar">
