@@ -18,7 +18,7 @@ public class Product {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     private String name;
     private BigDecimal price;
     private String imgUrl;
@@ -28,4 +28,6 @@ public class Product {
         this.price = price;
         this.imgUrl = imgUrl;
     }
+
+
 }
