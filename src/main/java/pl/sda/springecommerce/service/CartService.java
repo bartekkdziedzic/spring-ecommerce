@@ -47,4 +47,13 @@ public class CartService {
     }
 
 
+    public void deleteProductFromCart(Long productId){
+        Optional<Product> oProduct = productRepo.findById(productId);
+        if (oProduct.isPresent()) {
+            Product product = oProduct.get();
+            cart.deleteProduct(product);
+        }
+    }
+
+
 }

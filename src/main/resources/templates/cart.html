@@ -37,7 +37,7 @@
             </td>
             <td th:text="${cartProduct.productPriceSum}">7.99</td>
             <td>
-                <a class="manipulation-btn" href="">X</a>
+                <a class="manipulation-btn" th:href="@{'/order/delete/' + ${cartProduct.product.id}}">X</a>
             </td>
 
         </tr>

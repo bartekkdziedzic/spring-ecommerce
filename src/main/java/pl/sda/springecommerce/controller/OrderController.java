@@ -37,4 +37,10 @@ public class OrderController {
     }
 
 
+    @GetMapping("/delete/{productId}")
+    public String deleteProduct(@PathVariable("productId") Long productId) {
+        cartService.deleteProductFromCart(productId);
+        return "cart";
+    }
+
 }

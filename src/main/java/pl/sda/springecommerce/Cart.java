@@ -37,11 +37,18 @@ public class Cart {
             CartProduct cartProduct = optionalCartProduct.get();
             cartProduct.decreaseCounter();
             if (cartProduct.hasNoProducts()) {
-                cartProducts.removeIf(p -> p.idEquals(product));
+               deleteProduct(product);
             }
         }
         calculatePriceAndCounter();
     }
+
+
+    public void deleteProduct(Product product) {
+        cartProducts.removeIf(p -> p.idEquals(product));
+        calculatePriceAndCounter();
+    }
+
 
 
     public void calculatePriceAndCounter() {
