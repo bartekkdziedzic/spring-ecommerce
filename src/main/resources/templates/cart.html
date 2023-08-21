@@ -35,7 +35,7 @@
                 <p th:text="${cartProduct.counter}"></p>
                 <a class="manipulation-btn" th:href="@{'/order/increase/' + ${cartProduct.product.id}}">+</a>
             </td>
-            <td th:text="${cartProduct.productPriceSum}">7.99</td>
+            <td th:text="${cartProduct.productPriceSum}"></td>
             <td>
                 <a class="manipulation-btn" th:href="@{'/order/delete/' + ${cartProduct.product.id}}">X</a>
             </td>
@@ -49,7 +49,7 @@
         </p>
     </div>
 
-    <button>Pay</button>
+    <a th:href="@{/order/orderSummary}">Pay</a>
 
 </div>
 

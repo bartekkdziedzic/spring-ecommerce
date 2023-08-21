@@ -3,6 +3,7 @@ package pl.sda.springecommerce.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.sda.springecommerce.Cart;
+import pl.sda.springecommerce.ProductOperation;
 import pl.sda.springecommerce.dao.ProductRepo;
 import pl.sda.springecommerce.model.Product;
 
@@ -22,38 +23,23 @@ public class CartService {
     }
 
 
-
-
-    public List<Product> getAllProducts(){
+    public List<Product> getAllProducts() {
         return productRepo.findAll();
     }
 
 
-    public void addProductToCart(Long productId){
+    public void productOperation(Long productId, ProductOperation productOperation) {
         Optional<Product> oProduct = productRepo.findById(productId);
         if (oProduct.isPresent()) {
             Product product = oProduct.get();
-            cart.addProduct(product);
+            switch (productOperation) {
+                case ADD -> cart.addProduct(product);
+                case DECREASE -> cart.decreaseProduct(product);
+                case DELETE -> cart.deleteProduct(product);
+                default -> throw new IllegalArgumentException();
+            }
         }
+
+
     }
-
-
-    public void removeProductFromCart(Long productId){
-        Optional<Product> oProduct = productRepo.findById(productId);
-        if (oProduct.isPresent()) {
-            Product product = oProduct.get();
-            cart.removeProduct(product);
-        }
-    }
-
-
-    public void deleteProductFromCart(Long productId){
-        Optional<Product> oProduct = productRepo.findById(productId);
-        if (oProduct.isPresent()) {
-            Product product = oProduct.get();
-            cart.deleteProduct(product);
-        }
-    }
-
-
 }

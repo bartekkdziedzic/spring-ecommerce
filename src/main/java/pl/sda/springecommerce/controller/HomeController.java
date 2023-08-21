@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import pl.sda.springecommerce.ProductOperation;
 import pl.sda.springecommerce.service.CartService;
 
 @Controller
@@ -26,17 +27,10 @@ public class HomeController {
 
     @GetMapping("/add/{productId}")
     public String addProductToCart(@PathVariable("productId") Long productId, Model model) {
-        cartService.addProductToCart(productId);
+        cartService.productOperation(productId, ProductOperation.ADD);
         model.addAttribute("products", cartService.getAllProducts());
         return "home";
     }
 
-
-    @GetMapping("/remove/{productId}")
-    public String removeProductFromCart(@PathVariable("productId") Long productId, Model model) {
-        cartService.removeProductFromCart(productId);
-        model.addAttribute("products", cartService.getAllProducts());
-        return "home";
-    }
 
 }

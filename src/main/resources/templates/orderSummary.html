@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <title>admin- adding new product</title>
+</head>
+<body>
+<header th:replace="/fragments/header :: ecommerceHeader"></header>
+
+<div class="main-content">
+
+
+    <table cellspacing="0" style="border: 0px">
+        <tr th:each="cartProduct: ${@cart.cartProducts}">
+            <td>1</td>
+            <td>
+                <img th:src="@{${cartProduct.product.imgUrl}}">
+            </td>
+            <td th:text="${cartProduct.product.name}"></td>
+            <td style="display: flex; padding-top: 10px;">
+                <p th:text="${cartProduct.counter}"></p>
+            </td>
+            <td th:text="${cartProduct.productPriceSum}"></td>
+        </tr>
+
+        <p>
+            <span>To pay: </span><span th:text="${@cart.cartSum}"></span><span>PLN</span>
+        </p>
+
+
+    </table>
+
+
+
+
+    <form th:action="@{/order/saveOrder}" method="post">
+        <label>First Name:</label><br>
+        <input type="text" name="firstName" required><br>
+        <label>Last Name:</label><br>
+        <input type="text" name="lastName" required><br>
+        <label>Address:</label><br>
+        <input type="text" name="address" required><br>
+        <label>Postal code:</label><br>
+        <input type="text" name="postcode" required><br>
+        <label>City:</label><br>
+        <input type="text" name="city" required><br>
+
+        <button type="submit">Order</button>
+    </form>
+
+
+</div>
+
+
+</body>
+</html>

@@ -31,7 +31,7 @@ public class Cart {
     }
 
 
-    public void removeProduct(Product product) {
+    public void decreaseProduct(Product product) {
         Optional<CartProduct> optionalCartProduct = getCartProduct(product);
         if (optionalCartProduct.isPresent()) {
             CartProduct cartProduct = optionalCartProduct.get();
@@ -67,6 +67,13 @@ public class Cart {
                 .filter(cp -> cp.idEquals(product))
                 .findFirst();
     }
+
+
+public void clearCart(){
+        cartProducts.clear();
+        counter=0;
+        cartSum=BigDecimal.ZERO;
+}
 
 
 }
