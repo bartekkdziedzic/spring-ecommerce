@@ -1,0 +1,146 @@
+body {
+    margin: 0px;
+    background-color: beige;
+}
+
+header {
+    text-align: center;
+    background-color: silver;
+    color: black;
+    padding: 5px;
+}
+
+
+.title {
+    float: left;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.cart-button {
+
+    float: right;
+    margin-left: 5px;
+    border: solid 1px black;
+}
+
+.settings {
+
+    float: right;
+    margin-left: 5px;
+    border: solid 1px black;
+}
+
+.searchbar {
+
+    border: solid 1px black;
+}
+
+
+.main-content {
+    background-color: rgb(226, 220, 194);
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+    padding: 5px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product {
+    background-color: white;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+
+
+}
+
+.product-name {
+    background-color: black;
+    color: white;
+    padding: 3px;
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    margin-top: 0;
+    width: calc(100% - 6px);
+}
+
+
+.product img {
+    width: 70%;
+    height: auto;
+    border: 1px solid black;
+}
+
+.add-btn {
+    text-decoration: 0;
+    background-color: silver;
+    border: 1px solid black;
+    color: magenta;
+    width: 70%;
+    text-align: center;
+
+    padding: 2px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+}
+
+.add-btn:hover {
+    background-color: brown;
+}
+
+form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+form label {
+    width: 100%;
+}
+
+.manipulation-btn {
+    background-color: blanchedalmond;
+    text-decoration: none;
+    display: block;
+    width: 30px;
+    height: 25px;
+    text-align: center;
+    border-radius: 5px;
+    padding-top: 5px;
+    font-size: larger;
+    font-weight: bold;
+}
+
+
+table, tr {
+    width: 80%;
+    border: solid 1px black;
+}
+
+th {
+    text-align: left;
+    border: solid 1px black;
+}
+
+td img {
+    width: 40px;
+    height: 40px;
+}
+
+td p {
+    margin: 3px;
+    padding: 5px;
+}
+
+

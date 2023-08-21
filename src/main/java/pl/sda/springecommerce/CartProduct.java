@@ -40,4 +40,9 @@ public class CartProduct {
         return counter == 0;
     }
 
+
+    public boolean idEquals(Product product){
+        return this.product.getId().equals(product.getId());
+    }
+
 }
