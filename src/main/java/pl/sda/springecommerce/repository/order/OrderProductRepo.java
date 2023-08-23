@@ -1,4 +1,4 @@
-package pl.sda.springecommerce.dao.order;
+package pl.sda.springecommerce.repository.order;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

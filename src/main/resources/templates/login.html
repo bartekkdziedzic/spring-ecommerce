@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <title>admin- adding new product</title>
+</head>
+<body>
+<header th:replace="/fragments/header :: ecommerceHeader"></header>
+
+<div class="main-content">
+
+    <div th:if="${param.error}" class="alert alert-success">
+        invalid credentials.
+    </div>
+    <div th:if="${param.logout}" class="alert alert-success">
+        You have been logged out successfully.
+    </div>
+
+
+    <form th:action="@{/login}" method="post">
+        <label>Username:</label><br>
+        <input
+                id="username"
+                type="text"
+                name="username" required
+                placeholder="Username"
+        ><br>
+
+        <label>Password:</label><br>
+        <input
+                id="password"
+                type="password"
+                name="password" required
+                placeholder="Password"
+        ><br>
+
+        <button th:href="@{/register}" type="submit">Register - if you don't have an account already</button>
+        <button type="submit" value="Log in">Log in</button>
+    </form>
+
+
+</div>
+
+
+</body>
+</html>

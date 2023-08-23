@@ -3,7 +3,7 @@ package pl.sda.springecommerce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
-import pl.sda.springecommerce.dao.ProductRepo;
+import pl.sda.springecommerce.repository.ProductRepo;
 import pl.sda.springecommerce.model.Product;
 
 import java.math.BigDecimal;

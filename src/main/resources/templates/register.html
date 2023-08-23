@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <title>admin- adding new product</title>
+</head>
+<body>
+<header th:replace="/fragments/header :: ecommerceHeader"></header>
+
+<div class="main-content">
+
+    <div th:if="${param.fail}" class="alert alert-success">
+        Username or email is already taken.
+    </div>
+
+    <form th:action="@{/register/save}" method="post">
+        <label>Username:</label><br>
+        <input type="text" name="username" required><br>
+        <label>Email:</label><br>
+        <input type="text" name="email" required><br>
+        <label>Password:</label><br>
+        <input type="password" name="password" required><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <button th:href="@{/login}" type="submit">Log in - if you have an account already</button>
+    <button type="submit" value="Log in">Register</button>
+
+</div>
+
+
+</body>
+</html>
