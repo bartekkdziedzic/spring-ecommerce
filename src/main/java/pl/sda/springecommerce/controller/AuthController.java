@@ -1,6 +1,8 @@
 package pl.sda.springecommerce.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,10 +19,12 @@ import javax.validation.Valid;
 public class AuthController {
 
     private UserService userService;
+    private PasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public AuthController(UserService userService) {
+    public AuthController(UserService userService, PasswordEncoder bCryptPasswordEncoder) {
         this.userService = userService;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @GetMapping("/login")
@@ -38,6 +42,7 @@ public String loginPage(){
     @PostMapping("/register/save")
     public String register(@Valid @ModelAttribute("user") RegistrationDto user,
                            BindingResult result, Model model) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         UserEntity existingUserEmail = userService.findByEmail(user.getEmail());
         UserEntity existingUserUsername = userService.findByUsername(user.getUsername());
 

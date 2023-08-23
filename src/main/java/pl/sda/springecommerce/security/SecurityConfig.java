@@ -4,52 +4,76 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
 import static org.springframework.security.config.Customizer.withDefaults;
+import static org.springframework.security.config.http.MatcherType.mvc;
+import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
 @Configuration
-@EnableWebSecurity
-public class SecurityConfig{
-
+//@EnableWebSecurity
+public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain apiFilterChain(HttpSecurity http) throws Exception {
-        http
-                .securityMatcher("/api/**")
-                .authorizeHttpRequests(authorize -> authorize
-                        .anyRequest().hasRole("USER")
-                )
-                .httpBasic(withDefaults());
-        return http.build();
+    public static PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers(toH2Console(), antMatcher("/login"),antMatcher("/register"),antMatcher("/register/save"))
+                               .permitAll()
+                        .anyRequest().authenticated()
+                )
+                .csrf(csrf -> csrf .ignoringRequestMatchers(toH2Console()))
+                .formLogin((form) -> form
+                        .loginPage("/login")
+                        .permitAll()
+                ).headers().frameOptions().disable().and()
+                .logout((logout) -> logout.permitAll());
 
+        return http.build();
+    }
 
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http.authorizeHttpRequests(auth -> auth
-//                       .requestMatchers("/login", "/register", "/register/**", "/css/**","/h2-console/**").permitAll()
-//                        .anyRequest().authenticated());
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        UserDetails user =
+//                User.withDefaultPasswordEncoder()
+//                        .username("user")
+//                        .password("password")
+//                        .roles("USER")
+//                        .build();
 //
-//                return http.build();
+//        return new InMemoryUserDetailsManager(user);
 //    }
 }
 
 
 
+
+
+
 //    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-//
-//
-//               http.csrf().disable()
-//                .authorizeHttpRequests()
-//                .requestMatchers("/login", "/register", "/clubs", "/register/**", "/css/**", "/js/**","/h2-console/**")
-//                .permitAll()
+//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        http.csrf().disable()
+//                .authorizeHttpRequests().anyRequest().permitAll()
+//                // .antMatchers("/login", "/register", "/clubs", "/css/**", "/js/**")
+//                //  .permitAll()
 //                .and()
 //                .formLogin(form -> form
 //                        .loginPage("/login")
-//                        .defaultSuccessUrl("/")
+//                        .defaultSuccessUrl("/h")
 //                        .loginProcessingUrl("/login")
 //                        .failureUrl("/login?error=true")
 //                        .permitAll()
@@ -57,6 +81,21 @@ public class SecurityConfig{
 //                        logout -> logout
 //                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()
 //                );
-//
+
+//        http
+//                .authorizeHttpRequests()
+//                .requestMatchers("/h2-console/**").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .and()
+//                .csrf().ignoringRequestMatchers("/h2-console/**")
+//                .and()
+//                .headers().frameOptions().sameOrigin()
+//                .and()
+//                .build();
+
+
 //        return http.build();
 //    }
+

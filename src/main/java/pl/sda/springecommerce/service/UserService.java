@@ -24,7 +24,7 @@ public class UserService {
 
     public void saveUser(RegistrationDto registrationDto){
         UserEntity user = new UserEntity();
-        user.setId(registrationDto.getId());
+        user.setUsername(registrationDto.getUsername());
         user.setEmail(registrationDto.getEmail());
         user.setPassword(registrationDto.getPassword());
         Role role = roleRepo.findByName("USER");

@@ -7,7 +7,7 @@
     <title>admin- adding new product</title>
 </head>
 <body>
-<header th:replace="/fragments/header :: ecommerceHeader"></header>
+<header th:replace="~{/fragments/header :: ecommerceHeader}"></header>
 
 <div class="main-content">
 
@@ -16,6 +16,7 @@
     </div>
 
     <form th:action="@{/register/save}" method="post">
+
         <label>Username:</label><br>
         <input type="text" name="username" required><br>
         <label>Email:</label><br>
@@ -23,9 +24,10 @@
         <label>Password:</label><br>
         <input type="password" name="password" required><br>
         <button type="submit">Submit</button>
+
     </form>
 
-    <button th:href="@{/login}" type="submit">Log in - if you have an account already</button>
+    <a th:href="@{/login}" type="submit">Log in - if you have an account already</a>
     <button type="submit" value="Log in">Register</button>
 
 </div>

@@ -7,7 +7,7 @@
     <title>admin- adding new product</title>
 </head>
 <body>
-<header th:replace="/fragments/header :: ecommerceHeader"></header>
+<header th:replace="~{/fragments/header :: ecommerceHeader}"></header>
 
 <div class="main-content">
 
@@ -18,28 +18,28 @@
         You have been logged out successfully.
     </div>
 
+    <div class="login-form">
+        <form th:action="@{/login}" method="post">
+            <label>Username:</label><br>
+            <input
+                    id="username"
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+            ><br>
 
-    <form th:action="@{/login}" method="post">
-        <label>Username:</label><br>
-        <input
-                id="username"
-                type="text"
-                name="username" required
-                placeholder="Username"
-        ><br>
+            <label>Password:</label><br>
+            <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+            ><br>
 
-        <label>Password:</label><br>
-        <input
-                id="password"
-                type="password"
-                name="password" required
-                placeholder="Password"
-        ><br>
-
-        <button th:href="@{/register}" type="submit">Register - if you don't have an account already</button>
-        <button type="submit" value="Log in">Log in</button>
-    </form>
-
+            <a th:href="@{/register}" type="submit">Register - if you don't have an account already</a>
+            <button type="submit" value="Log in">Log in</button>
+        </form>
+    </div>
 
 </div>
 
