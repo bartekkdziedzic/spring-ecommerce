@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:sec="thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style.css"/>
@@ -23,6 +24,8 @@
 
     <span class="title"><a th:href="${'/login'}">Log In</a></span>
     <span class="title"><a th:href="${'/register'}">Register</a></span>
+    <span class="title"><a th:href="${'/admin'}">Add Product</a></span>
+  <span> <div th:text="${#authentication.name}"></div></span>
 
     <span class="searchbar">
           <label>Search:</label>
