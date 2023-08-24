@@ -47,10 +47,10 @@ public String loginPage(){
         UserEntity existingUserUsername = userService.findByUsername(user.getUsername());
 
         if (existingUserEmail != null && existingUserEmail.getEmail() != null && !existingUserEmail.getEmail().isEmpty()) {
-            result.rejectValue("email", "There is already an existing account registered on given email");
+            return "redirect:/register?fail";
         }
         if (existingUserUsername != null && existingUserUsername.getUsername() != null && !existingUserUsername.getUsername().isEmpty()) {
-            result.rejectValue("username", "There is already an existing account registered on given username");
+            return "redirect:/register?fail";
         }
 
         if (result.hasErrors()) {
