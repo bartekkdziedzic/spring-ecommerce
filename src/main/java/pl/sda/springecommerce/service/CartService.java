@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.sda.springecommerce.Cart;
 import pl.sda.springecommerce.ProductOperation;
-import pl.sda.springecommerce.dao.ProductRepo;
+import pl.sda.springecommerce.repository.ProductRepo;
 import pl.sda.springecommerce.model.Product;
 
 import java.util.List;

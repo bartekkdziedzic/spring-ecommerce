@@ -1,14 +1,13 @@
 package pl.sda.springecommerce.controller;
 
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import pl.sda.springecommerce.dao.ProductRepo;
-import pl.sda.springecommerce.dao.order.OrderRepo;
+import pl.sda.springecommerce.repository.ProductRepo;
+import pl.sda.springecommerce.repository.order.OrderRepo;
 import pl.sda.springecommerce.model.Product;
 import pl.sda.springecommerce.model.order.Order;
 

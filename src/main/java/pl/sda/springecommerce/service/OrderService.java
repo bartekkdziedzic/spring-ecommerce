@@ -3,14 +3,11 @@ package pl.sda.springecommerce.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.sda.springecommerce.Cart;
-import pl.sda.springecommerce.dao.order.OrderProductRepo;
-import pl.sda.springecommerce.dao.order.OrderRepo;
+import pl.sda.springecommerce.repository.order.OrderProductRepo;
+import pl.sda.springecommerce.repository.order.OrderRepo;
 import pl.sda.springecommerce.dto.OrderDto;
 import pl.sda.springecommerce.mapper.OrderMapper;
 import pl.sda.springecommerce.model.order.Order;
-import pl.sda.springecommerce.model.order.OrderProduct;
-
-import java.util.List;
 
 @Service
 public class OrderService {
