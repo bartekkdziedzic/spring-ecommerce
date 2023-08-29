@@ -18,7 +18,7 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private CustomUserDetailsService userDetailsService;
+    private final CustomUserDetailsService userDetailsService;
 
     @Autowired
     public SecurityConfig(CustomUserDetailsService userDetailsService) {
@@ -40,6 +40,8 @@ public class SecurityConfig {
                                 , antMatcher("/register")
                                 , antMatcher("/register/save")
                                 , antMatcher("/css/**")
+                                , antMatcher("/order/**")
+                                , antMatcher("/add/**")
                                 , antMatcher("/"))
                         .permitAll()
                         .anyRequest().authenticated()
@@ -47,6 +49,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.ignoringRequestMatchers(toH2Console()))
                 .formLogin((form) -> form
                         .loginPage("/login")
+                        .loginProcessingUrl("/login")  //new
                         .permitAll()
                 ).headers().frameOptions().disable().and()
                 .logout((logout) -> logout.permitAll());

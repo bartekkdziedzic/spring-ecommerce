@@ -20,11 +20,15 @@
         <span th:text="${@cart.cartSum}"></span>
         <span>PLN</span>
         </a>
-    </span>
+         </span>
+            <span class="cart-button" th:text="${#authentication.name}"></span>
 
-    <span class="title"><a th:href="${'/login'}">Log In</a></span>
-    <span class="title"><a th:href="${'/register'}">Register</a>
-   <div th:text="${#authentication.name}"></div></span>
+
+    <a class="title" th:href="${'/login'}">Log In</a>
+    <a class="title" th:href="${'/register'}">Register</a>
+
+    <span class="title"><a th:href="${'/admin'}" sec:authorize access="hasAnyRole('ADMIN','USER')">Add Product</a></span>
+
 
     <span class="searchbar">
           <label>Search:</label>
