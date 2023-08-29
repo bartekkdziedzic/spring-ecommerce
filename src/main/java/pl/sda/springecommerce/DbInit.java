@@ -44,7 +44,6 @@ public class DbInit implements CommandLineRunner {
         user.setPassword(passwordEncoder.encode("admin"));
         user.setRole(Role.ADMIN);
 
-
         UserEntity testUser = new UserEntity();
         testUser.setUsername("user1");
         testUser.setEmail("user1");

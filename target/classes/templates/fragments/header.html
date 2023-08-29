@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<html xmlns:sec="thymeleaf.org/extras/spring-security">
+<html xmlns:sec="thymeleaf.org/extras/spring-security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="thymeleaf.org/extras/spring-security ">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style.css"/>
@@ -21,13 +22,18 @@
         <span>PLN</span>
         </a>
          </span>
-            <span class="cart-button" th:text="${#authentication.name}"></span>
+    <span class="cart-button" th:text="${#authentication.name}"></span>
+    <span class="cart-button" th:text="${#authentication.getAuthorities()}"></span>
 
 
     <a class="title" th:href="${'/login'}">Log In</a>
     <a class="title" th:href="${'/register'}">Register</a>
 
-    <span class="title"><a th:href="${'/admin'}" sec:authorize access="hasAnyRole('ADMIN','USER')">Add Product</a></span>
+    <span class="title"><a th:href="${'/admin'}"
+                           sec:authorize="hasAuthority('ADMIN')">
+<!--                           sec:authorize access="hasRole('ADMIN')"-->
+
+    Add Product</a></span>
 
 
     <span class="searchbar">
