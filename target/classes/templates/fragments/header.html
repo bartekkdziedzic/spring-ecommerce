@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <html xmlns:sec="thymeleaf.org/extras/spring-security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="thymeleaf.org/extras/spring-security ">
 <head>
@@ -10,10 +10,12 @@
 <body>
 
 <header th:fragment="ecommerceHeader">
-    <span class="title"><a th:href="${'/'}">virgShop</a></span>
-    <span class="settings">
-          <button type="button">Settings</button>
-    </span>
+    <span class="title"><a th:href="${'/'}">springShop</a></span>
+<!--    <span class="settings">-->
+<!--          <button type="button">Settings</button>-->
+<!--    </span>-->
+    <a class="cart-button" th:href="${'/login'}">Log In</a>
+    <a class="cart-button" th:href="${'/register'}">Register</a>
 
     <span class="cart-button">
         <a th:href="@{/order/cart}">
@@ -22,25 +24,20 @@
         <span>PLN</span>
         </a>
          </span>
-    <span class="cart-button" th:text="${#authentication.name}"></span>
-    <span class="cart-button" th:text="${#authentication.getAuthorities()}"></span>
+    <span class="cart-button" th:text="'Hello '+ ${#authentication.name}"></span>
 
 
-    <a class="title" th:href="${'/login'}">Log In</a>
-    <a class="title" th:href="${'/register'}">Register</a>
 
-    <span class="title"><a th:href="${'/admin'}"
-                           sec:authorize="hasAuthority('ADMIN')">
-<!--                           sec:authorize access="hasRole('ADMIN')"-->
-
-    Add Product</a></span>
+    <span><a th:href="${'/admin'}"
+             sec:authorize="hasAuthority('ADMIN')">
+        Add Product</a></span>
 
 
-    <span class="searchbar">
-          <label>Search:</label>
-          <input type="text">
-            <button type="button">Search</button>
-          </span>
+    <form action="/product/search" method="get" style="display:flex; flex-direction:row ; justify-content:center; align-items:center">
+        <label style="width: auto">Query:</label>
+        <input type="text" id="query" name="query" required>
+        <button type="submit">Search</button>
+    </form>
 
 </header>
 </body>

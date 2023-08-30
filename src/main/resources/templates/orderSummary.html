@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css"/>
-    <title>admin- adding new product</title>
+    <title>Summary</title>
 </head>
 <body>
 <header th:replace="~{/fragments/header :: ecommerceHeader}"></header>
@@ -13,6 +13,14 @@
 
 
     <table cellspacing="0" style="border: 0px">
+        <tr>
+            <th style="width: 30px;">No.</th>
+            <th style="width: 50px;"></th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Sum</th>
+        </tr>
+
         <tr th:each="cartProduct: ${@cart.cartProducts}">
             <td>1</td>
             <td>
@@ -24,7 +32,7 @@
             </td>
             <td th:text="${cartProduct.productPriceSum}"></td>
         </tr>
-
+<p></p>
         <p>
             <span>To pay: </span><span th:text="${@cart.cartSum}"></span><span>PLN</span>
         </p>

@@ -2,6 +2,7 @@ package pl.sda.springecommerce.service;
 
 import org.springframework.stereotype.Service;
 import org.h2.fulltext.FullText;
+import pl.sda.springecommerce.model.Product;
 import pl.sda.springecommerce.repository.ProductRepo;
 
 import java.util.List;
@@ -16,7 +17,9 @@ private ProductRepo productRepo;
     }
 
 
- //   public List
+    public List<Product> searchProducts(String query){
+        return productRepo.findByNameContainingIgnoreCase(query);
+    }
 
 
 }
