@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <title>Search-found</title>
+</head>
+
+<body>
+<header th:replace="~{/fragments/header :: ecommerceHeader}"></header>
+
+<div class="main-content">
+
+
+  <div class="product" th:each="product : ${searchResult}">
+
+    <p class="product-name" th:text="${product.name}"></p>
+    <img th:src="@{${product.imgUrl}}">
+
+    <div>
+      <span>Price:</span>
+      <span th:text="${product.price}"></span>
+      <span>PLN</span>
+    </div>
+    <a th:href="@{'/add/' + ${product.id}}" class="add-btn">Add to your cart</a>
+  </div>
+
+</div>
+</body>
+</html>

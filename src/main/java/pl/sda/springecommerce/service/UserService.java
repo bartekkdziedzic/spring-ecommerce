@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.sda.springecommerce.dto.RegistrationDto;
 import pl.sda.springecommerce.model.Role;
 import pl.sda.springecommerce.model.UserEntity;
-import pl.sda.springecommerce.repository.RoleRepo;
+
 import pl.sda.springecommerce.repository.UserRepo;
 
 import java.util.Arrays;
@@ -14,12 +14,10 @@ import java.util.Arrays;
 public class UserService {
 
     private UserRepo userRepo;
-    private RoleRepo roleRepo;
 
     @Autowired
-    public UserService(UserRepo userRepo, RoleRepo roleRepo) {
+    public UserService(UserRepo userRepo) {
         this.userRepo = userRepo;
-        this.roleRepo = roleRepo;
     }
 
     public void saveUser(RegistrationDto registrationDto){
@@ -27,8 +25,7 @@ public class UserService {
         user.setUsername(registrationDto.getUsername());
         user.setEmail(registrationDto.getEmail());
         user.setPassword(registrationDto.getPassword());
-        Role role = roleRepo.findByName("USER");
-        user.setRoles(Arrays.asList(role));
+        user.setRole(Role.USER);
         userRepo.save(user);
     }
 

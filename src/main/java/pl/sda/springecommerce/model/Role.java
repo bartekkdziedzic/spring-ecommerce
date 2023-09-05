@@ -1,23 +1,18 @@
 package pl.sda.springecommerce.model;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
 
-import java.util.List;
+public enum Role implements GrantedAuthority {
+    ADMIN("ADMIN"),
+    USER("USER");
+    private final String authority;
 
+    Role(String authority) {
+        this.authority = authority;
+    }
 
-@Getter
-@Setter
-@Entity
-@Table(name = "roles")
-public class Role {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-
-    @ManyToMany(mappedBy = "roles")
-    List<UserEntity> users;
+    @Override
+    public String getAuthority() {
+        return authority;
+    }
 }
