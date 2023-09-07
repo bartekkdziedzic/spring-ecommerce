@@ -37,7 +37,7 @@ public class Cart {
             CartProduct cartProduct = optionalCartProduct.get();
             cartProduct.decreaseCounter();
             if (cartProduct.hasNoProducts()) {
-               deleteProduct(product);
+                deleteProduct(product);
             }
         }
         calculatePriceAndCounter();
@@ -48,7 +48,6 @@ public class Cart {
         cartProducts.removeIf(p -> p.idEquals(product));
         calculatePriceAndCounter();
     }
-
 
 
     public void calculatePriceAndCounter() {
@@ -69,11 +68,11 @@ public class Cart {
     }
 
 
-public void clearCart(){
+    public void clearCart() {
         cartProducts.clear();
-        counter=0;
-        cartSum=BigDecimal.ZERO;
-}
+        counter = 0;
+        cartSum = BigDecimal.ZERO;
+    }
 
 
 }

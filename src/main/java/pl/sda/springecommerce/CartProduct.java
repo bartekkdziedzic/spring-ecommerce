@@ -41,7 +41,7 @@ public class CartProduct {
     }
 
 
-    public boolean idEquals(Product product){
+    public boolean idEquals(Product product) {
         return this.product.getId().equals(product.getId());
     }
 

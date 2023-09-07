@@ -1,6 +1,5 @@
 package pl.sda.springecommerce.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +18,6 @@ public class OrderController {
     private final CartService cartService;
     private final OrderService orderService;
 
-    @Autowired
     public OrderController(CartService cartService, OrderService orderService) {
         this.cartService = cartService;
         this.orderService = orderService;
@@ -49,19 +47,16 @@ public class OrderController {
         return "cart";
     }
 
-@GetMapping("/orderSummary")
-public String showOrderSummary(){
+    @GetMapping("/orderSummary")
+    public String showOrderSummary() {
         return "orderSummary";
-}
+    }
 
-@PostMapping("/saveOrder")
-public String saveOrder(OrderDto orderDto){
+    @PostMapping("/saveOrder")
+    public String saveOrder(OrderDto orderDto) {
         orderService.saveOrder(orderDto);
         return "redirect:/";
-}
-
-
-
+    }
 
 
 }

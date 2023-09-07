@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CustomUserDetailsPrincipal implements UserDetails {
 
-    private UserEntity user;
+    private final UserEntity user;
 
     public CustomUserDetailsPrincipal(UserEntity user) {
         this.user = user;
@@ -16,7 +16,7 @@ public class CustomUserDetailsPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return  List.of(user.getRole());
+        return List.of(user.getRole());
     }
 
     @Override

@@ -1,14 +1,12 @@
 package pl.sda.springecommerce;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import pl.sda.springecommerce.model.Product;
 import pl.sda.springecommerce.model.Role;
 import pl.sda.springecommerce.model.UserEntity;
 import pl.sda.springecommerce.repository.ProductRepo;
-import pl.sda.springecommerce.model.Product;
-
 import pl.sda.springecommerce.repository.UserRepo;
 
 import java.math.BigDecimal;
@@ -42,9 +40,7 @@ public class DbInit implements CommandLineRunner {
                 new Product("Dinoz", new BigDecimal(9.50), "https://a.allegroimg.com/s512/11d863/413cd9d141558f257500a4e43206/Lampka-nocna-dinozaur-Dinus-LED-DIPLODOK-niebieska"),
                 new Product("Rabbi", new BigDecimal(9.50), "https://cdn.drawception.com/images/panels/2018/1-1/rjzeBYSLjy-2.png"),
                 new Product("Juan", new BigDecimal(9.50), "https://i.imgflip.com/4ndpo6.png")
-
         ));
-
 
         UserEntity user = new UserEntity();
         user.setUsername("admin");
@@ -64,11 +60,9 @@ public class DbInit implements CommandLineRunner {
         testUser2.setPassword(passwordEncoder.encode("user2"));
         testUser2.setRole(Role.USER);
 
-userRepo.saveAll(List.of(
-       user,testUser,testUser2
-     //   new UserEntity(2L,"user1","user1","user1",Role.USER)
-));
-
+        userRepo.saveAll(List.of(
+                user, testUser, testUser2
+        ));
 
     }
 }

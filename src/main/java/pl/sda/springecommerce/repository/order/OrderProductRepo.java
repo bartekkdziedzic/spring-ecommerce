@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import pl.sda.springecommerce.model.order.OrderProduct;
 
 @Repository
-public interface OrderProductRepo extends JpaRepository<OrderProduct,Long> {
+public interface OrderProductRepo extends JpaRepository<OrderProduct, Long> {
 }

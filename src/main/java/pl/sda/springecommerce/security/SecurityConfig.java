@@ -1,11 +1,10 @@
 package pl.sda.springecommerce.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -20,7 +19,6 @@ public class SecurityConfig {
 
     private final CustomUserDetailsService userDetailsService;
 
-    @Autowired
     public SecurityConfig(CustomUserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
@@ -40,10 +38,6 @@ public class SecurityConfig {
                                 , antMatcher("/register")
                                 , antMatcher("/register/save")
                                 , antMatcher("/css/**")
-//                                , antMatcher("/order/**")
-//                                , antMatcher("/add/**")
-//                                , antMatcher("/product/**")
-//                                , antMatcher("/results/**")
                                 , antMatcher("/"))
                         .permitAll()
                         .anyRequest().authenticated()
@@ -54,65 +48,11 @@ public class SecurityConfig {
                         .loginProcessingUrl("/login")  //new
                         .permitAll()
                 ).headers().frameOptions().disable().and()
-                .logout((logout) -> logout.permitAll());
+                .logout(LogoutConfigurer::permitAll);
 
         return http.build();
     }
-
-
-//    public void configure(AuthenticationManagerBuilder builder) throws Exception {
-//        builder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-//    }
-
-
 }
 
 
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        UserDetails user =
-//                User.withDefaultPasswordEncoder()
-//                        .username("user")
-//                        .password("password")
-//                        .roles("USER")
-//                        .build();
-//
-//        return new InMemoryUserDetailsManager(user);
-//    }
-
-
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http.csrf().disable()
-//                .authorizeHttpRequests().anyRequest().permitAll()
-//                // .antMatchers("/login", "/register", "/clubs", "/css/**", "/js/**")
-//                //  .permitAll()
-//                .and()
-//                .formLogin(form -> form
-//                        .loginPage("/login")
-//                        .defaultSuccessUrl("/h")
-//                        .loginProcessingUrl("/login")
-//                        .failureUrl("/login?error=true")
-//                        .permitAll()
-//                ).logout(
-//                        logout -> logout
-//                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()
-//                );
-
-//        http
-//                .authorizeHttpRequests()
-//                .requestMatchers("/h2-console/**").permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .and()
-//                .csrf().ignoringRequestMatchers("/h2-console/**")
-//                .and()
-//                .headers().frameOptions().sameOrigin()
-//                .and()
-//                .build();
-
-
-//        return http.build();
-//    }
 

@@ -1,11 +1,10 @@
 package pl.sda.springecommerce.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.sda.springecommerce.Cart;
 import pl.sda.springecommerce.ProductOperation;
-import pl.sda.springecommerce.repository.ProductRepo;
 import pl.sda.springecommerce.model.Product;
+import pl.sda.springecommerce.repository.ProductRepo;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +15,6 @@ public class CartService {
     private final ProductRepo productRepo;
     private final Cart cart;
 
-    @Autowired
     public CartService(ProductRepo productRepo, Cart cart) {
         this.productRepo = productRepo;
         this.cart = cart;
@@ -39,7 +37,5 @@ public class CartService {
                 default -> throw new IllegalArgumentException();
             }
         }
-
-
     }
 }
