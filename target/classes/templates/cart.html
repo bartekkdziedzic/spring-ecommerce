@@ -16,7 +16,7 @@
     <table>
         <tr>
             <th style="width: 30px;">No.</th>
-            <th style="width: 50px;">pic</th>
+            <th style="width: 50px;"></th>
             <th>Name</th>
             <th>Quantity</th>
             <th>Sum</th>
@@ -46,10 +46,11 @@
     <div class="summary">
         <p>
             <span>To pay: </span><span th:text="${@cart.cartSum}">100 </span><span>PLN</span>
+            <a th:href="@{/order/orderSummary}" type="add-btn">Pay</a>
         </p>
     </div>
 
-    <a th:href="@{/order/orderSummary}">Pay</a>
+
 
 </div>
 

@@ -1,7 +1,5 @@
 package pl.sda.springecommerce.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,9 +11,8 @@ import pl.sda.springecommerce.repository.UserRepo;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private UserRepo userRepo;
+    private final UserRepo userRepo;
 
-    @Autowired
     public CustomUserDetailsService(UserRepo userRepo) {
         this.userRepo = userRepo;
     }
