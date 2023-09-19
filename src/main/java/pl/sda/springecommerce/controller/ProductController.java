@@ -1,5 +1,6 @@
 package pl.sda.springecommerce.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
 
+    @Autowired
     private SearchService searchService;
 
     @GetMapping("/search")
@@ -28,6 +30,5 @@ public class ProductController {
     public String showSearchForm() {
         return "/";
     }
-
 
 }

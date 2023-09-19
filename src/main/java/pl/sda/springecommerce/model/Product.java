@@ -1,17 +1,17 @@
 package pl.sda.springecommerce.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.Getter;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
-@Getter
-@Setter
+@AllArgsConstructor
+@Data
 @Entity
 public class Product {
 
@@ -22,11 +22,20 @@ public class Product {
     private BigDecimal price;
     private String imgUrl;
 
-    public Product(String name, BigDecimal price, String imgUrl) {
+
+    public Product(String name, BigDecimal price, String imgUrl, List<Category> categories) {
         this.name = name;
         this.price = price;
         this.imgUrl = imgUrl;
+        this.categories = categories;
     }
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "product_categories",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private List<Category> categories = new ArrayList<Category>();
 
 }

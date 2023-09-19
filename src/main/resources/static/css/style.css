@@ -58,8 +58,17 @@ header {
     align-items: center;
     margin-bottom: 10px;
 
-
 }
+
+.category-list {
+    display: inline-block;
+}
+
+.category-list span {
+    display: inline;
+    margin-right: 2px;
+}
+
 
 .product-name {
     background-color: black;

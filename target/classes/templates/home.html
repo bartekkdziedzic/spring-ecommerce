@@ -28,7 +28,11 @@
             <span th:text="${product.price}"></span>
             <span>PLN</span>
         </div>
-
+        <div class="category-list">
+        <span th:each="category : ${product.categories}">
+            <span th:text="${category.name}"></span>
+        </span>
+        </div>
         <a th:href="@{'/add/' + ${product.id}}" class="add-btn">Add to your cart</a>
     </div>
 

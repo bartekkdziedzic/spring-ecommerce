@@ -20,5 +20,4 @@ public class SearchService {
         return productRepo.findByNameContainingIgnoreCase(query);
     }
 
-
 }

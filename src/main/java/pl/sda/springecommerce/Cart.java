@@ -27,7 +27,6 @@ public class Cart {
                 () -> cartProducts.add(new CartProduct(product))
         );
         calculatePriceAndCounter();
-
     }
 
 
@@ -73,6 +72,5 @@ public class Cart {
         counter = 0;
         cartSum = BigDecimal.ZERO;
     }
-
 
 }
