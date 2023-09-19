@@ -61,6 +61,16 @@ header {
 
 }
 
+.category-list {
+    display: inline-block;
+}
+
+.category-list span {
+    display: inline;
+    margin-right: 2px;
+}
+
+
 .product-name {
     background-color: black;
     color: white;
