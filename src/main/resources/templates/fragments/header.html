@@ -27,7 +27,6 @@
     <span class="cart-button" th:text="'Hello '+ ${#authentication.name}"></span>
 
 
-
     <span><a th:href="${'/admin'}"
              sec:authorize="hasAuthority('ADMIN')">
         Add Product</a></span>
