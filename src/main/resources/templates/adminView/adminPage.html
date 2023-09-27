@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <title>admin- adding new product</title>
+</head>
+<body>
+<header th:replace="/fragments/header :: ecommerceHeader"></header>
+
+<div class="main-content">
+<!--<table>-->
+<!--&lt;!&ndash;    <div  th:each="category : ${categories}">&ndash;&gt;-->
+<!--       <tr th:each="category : ${categories}" th:text="${category.name}"></tr>-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--</table>-->
+
+
+    <table style="width: 100px">
+        <thead>
+        <tr>
+            <th> Categories </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="category : ${categories}">
+            <td><span th:text="${category.name}"> </span></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
+
+
+    <form th:action="@{/admin/item}" method="post">
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br>
+        <label>Price:</label><br>
+        <input type="number" min="0.01" step="0.01" name="price" required><br>
+        <label>Image url:</label><br>
+        <input type="text" name="imgUrl" required><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <form th:action="@{/admin/category}" method="post">
+        <label>Category name:</label><br>
+        <input type="text" name="name" required><br>
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+
+
+</body>
+</html>

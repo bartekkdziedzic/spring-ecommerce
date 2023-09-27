@@ -2,6 +2,7 @@ package pl.sda.springecommerce.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +20,8 @@ public class WeatherController {
     }
 
     @GetMapping("/Warsaw")
-    public ResponseEntity<WeatherData> getWeatherForWarsaw() {
+    public ResponseEntity<Double> getWeatherForWarsaw() {
         WeatherData weatherData = weatherService.getWeatherForCity("Warsaw");
-        return ResponseEntity.ok(weatherData);
+        return ResponseEntity.ok(weatherData.getCurrent().getTemp_c());
     }
 }
