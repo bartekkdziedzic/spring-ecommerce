@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.sda.springecommerce.model.Category;
+import pl.sda.springecommerce.model.Product;
+import pl.sda.springecommerce.model.order.Order;
 import pl.sda.springecommerce.repository.CategoryRepo;
 import pl.sda.springecommerce.repository.ProductRepo;
 import pl.sda.springecommerce.repository.order.OrderRepo;
-import pl.sda.springecommerce.model.Product;
-import pl.sda.springecommerce.model.order.Order;
 
 import java.util.List;
 
@@ -46,26 +46,6 @@ public class AdminController {
         categoryRepo.save(category);
         return "redirect:/admin";
     }
-
-
-/*
-// addCategory page control
-    @GetMapping
-    private String adminAddCategoryPage() {
-        return "adminView/addProduct";
-    }
-// addCategory logic
-    @PostMapping
-    private String addCategory(Product product) {
-        productRepo.save(product);
-        return "redirect:/";
-    }
-// show categories admin-page
-    @GetMapping
-    private String adminAddCategoryPage() {
-        return "adminView/addProduct";
-    }
-    */
 
     @GetMapping("/showOrders")
     @ResponseBody

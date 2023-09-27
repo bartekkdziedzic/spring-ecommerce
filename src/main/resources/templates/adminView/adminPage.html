@@ -10,17 +10,11 @@
 <header th:replace="/fragments/header :: ecommerceHeader"></header>
 
 <div class="main-content">
-<!--<table>-->
-<!--&lt;!&ndash;    <div  th:each="category : ${categories}">&ndash;&gt;-->
-<!--       <tr th:each="category : ${categories}" th:text="${category.name}"></tr>-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-<!--</table>-->
-
 
     <table style="width: 100px">
         <thead>
         <tr>
-            <th> Categories </th>
+            <th> Categories</th>
         </tr>
         </thead>
         <tbody>
@@ -29,11 +23,6 @@
         </tr>
         </tbody>
     </table>
-
-
-
-
-
 
     <form th:action="@{/admin/item}" method="post">
         <label>Name:</label><br>
