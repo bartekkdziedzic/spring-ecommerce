@@ -27,10 +27,9 @@
     <span class="cart-button" th:text="'Hello '+ ${#authentication.name}"></span>
 
 
-
     <span><a th:href="${'/admin'}"
              sec:authorize="hasAuthority('ADMIN')">
-        Add Product</a></span>
+        Admin page</a></span>
 
 
     <form action="/product/search" method="get" style="display:flex; flex-direction:row ; justify-content:center; align-items:center">

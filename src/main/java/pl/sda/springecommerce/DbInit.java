@@ -39,7 +39,7 @@ public class DbInit implements CommandLineRunner {
                 new Product("Piggy Bank", new BigDecimal(1.50), "https://m.media-amazon.com/images/I/51ckv2myWXL.jpg", List.of(testCat3)),
                 new Product("Black cat", new BigDecimal(8.50), "https://www.rd.com/wp-content/uploads/2021/01/GettyImages-1175550351.jpg", List.of(testCat1)),
                 new Product("Porky", new BigDecimal(8.50), "https://icdn.2cda.pl/g/122975_147752136690542103.jpg", List.of(testCat3)),
-                new Product("Doberman", new BigDecimal(8.50), "https://petso.pl/media/cache/resolve/category/uploads/images/breed/1BwWpw2Dq27ehUBGFsBFog.png", List.of(testCat2)),
+                new Product("Doberman", new BigDecimal(8.50), "https://s3.eu-central-1.amazonaws.com/cdn.psy.pl/dobek5_e1516890300644_95c91d49bf.jpg", List.of(testCat2)),
                 new Product("Chomiuk", new BigDecimal(1.01), "https://i.wpimg.pl/1920x0/portal-abczdrowie.wpcdn.pl/imageCache/2019/03/07/64997855-m_47ea.jpg", List.of(testCat3)),
                 new Product("Tutel", new BigDecimal(9.50), "https://assets.petco.com/petco/image/upload/f_auto,q_auto/aquatic-turtle-care-sheet-hero", List.of(testCat3)),
                 new Product("Bear", new BigDecimal(9.50), "https://aletaniereczniki.pl/img/towary/1/2019_12/311-1.jpg", List.of(testCat3)),
